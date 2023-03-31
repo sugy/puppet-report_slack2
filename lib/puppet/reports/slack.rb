@@ -92,6 +92,7 @@ Run Environment    = %s
       https = Net::HTTP.new(uri.host, 443)
     end
     https.use_ssl = true
+    https.verify_mode = OpenSSL::SSL::VERIFY_NONE if @config["ssl_verify_none"] == true
     r = https.start do |https|
       https.post(uri.path, payload.to_json)
     end

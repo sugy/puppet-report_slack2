@@ -1,17 +1,19 @@
 class report_slack2 (
-  $username   = undef,
-  $webhook    = undef,
-  $channels   = [],
-  $report_url = '',
+  $username        = undef,
+  $webhook         = undef,
+  $channels        = [],
+  $report_url      = '',
+  $ssl_verify_none = undef,
 ) {
 
   $slack_puppet_confdir = "/etc/puppetlabs/puppet"
 
   $slack = {
-    username    => $username,
-    webhook     => $webhook,
-    channels    => $channels,
-    report_url  => $report_url
+    username        => $username,
+    webhook         => $webhook,
+    channels        => $channels,
+    report_url      => $report_url,
+    ssl_verify_none => $ssl_verify_none,
   }
 
   file { "${slack_puppet_confdir}/slack.yaml":
